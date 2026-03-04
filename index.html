@@ -1,36 +1,225 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certificate Request Form</title>
+    <title>IPA BLACK SIGN | أنوبيس</title>
+    <style>
+        :root {
+            --gold-glow: #ffcc00;
+            --deep-black: #000000;
+            --accent-gold: #b8860b;
+            --glass-bg: rgba(10, 10, 10, 0.9);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* خلفية النجوم المتحركة */
+        .stars-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: transparent url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/123163/stars.png') repeat;
+            z-index: 1;
+            opacity: 0.3;
+            animation: move-stars 100s linear infinite;
+        }
+
+        @keyframes move-stars {
+            from { background-position: 0 0; }
+            to { background-position: 0 -10000px; }
+        }
+
+        .container {
+            width: 90%;
+            max-width: 480px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 2px solid rgba(184, 134, 11, 0.3);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 0 60px rgba(0, 0, 0, 1), 0 0 20px rgba(184, 134, 11, 0.2);
+            z-index: 10;
+            text-align: center;
+        }
+
+        /* أيقونة أنوبيس الذهبية */
+        .anubis-svg {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 0 15px var(--gold-glow));
+        }
+
+        h1 {
+            font-size: 30px;
+            margin-bottom: 5px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .sub-title {
+            color: var(--accent-gold);
+            font-size: 14px;
+            margin-bottom: 30px;
+            opacity: 0.8;
+        }
+
+        .form-group {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            margin-bottom: 8px;
+            color: #ffd700;
+            padding-right: 10px;
+        }
+
+        .input-box {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            border-radius: 15px;
+            padding: 15px;
+            color: #fff;
+            font-size: 15px;
+            box-sizing: border-box;
+            transition: 0.3s;
+        }
+
+        .input-box:focus {
+            outline: none;
+            border-color: var(--gold-glow);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.2);
+        }
+
+        /* زر التوقيع الجديد */
+        .black-btn {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(45deg, #000, #333);
+            border: 1px solid var(--accent-gold);
+            border-radius: 15px;
+            color: var(--gold-glow);
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .black-btn:hover {
+            background: #000;
+            box-shadow: 0 0 30px rgba(255, 204, 0, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .black-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(transparent, rgba(255, 204, 0, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: 0.5s;
+        }
+
+        .black-btn:hover::after {
+            left: 100%;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 10px;
+            color: #444;
+            letter-spacing: 2px;
+        }
+
+        option { background: #000; color: #fff; }
+    </style>
 </head>
 <body>
-    <h1>Interactive Certificate Request Form</h1>
-    <form action="/submit_certificate" method="post" enctype="multipart/form-data">
-        <label for="certificate">Upload P12 Certificate:</label>
-        <input type="file" id="certificate" name="certificate" accept=".p12" required><br><br>
 
-        <label for="password">Enter Password for Signing:</label>
-        <input type="password" id="password" name="password" required><br><br>
+    <div class="stars-container"></div>
 
-        <h2>Select Applications to Sign:</h2>
-        <input type="checkbox" id="esign" name="applications" value="Esign.ipa">
-        <label for="esign">Esign.ipa</label><br>
+    <div class="container">
+        <svg class="anubis-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 4L18 28H46L32 4Z" fill="#b8860b"/>
+            <path d="M12 12L18 28H6L12 12Z" fill="#ffd700"/>
+            <path d="M52 12L46 28H58L52 12Z" fill="#ffd700"/>
+            <path d="M32 28V56M18 28L12 50M46 28L52 50" stroke="#ffd700" stroke-width="2"/>
+            <circle cx="32" cy="35" r="2" fill="#fff"/>
+        </svg>
 
-        <input type="checkbox" id="ksign" name="applications" value="Ksign.ipa">
-        <label for="ksign">Ksign.ipa</label><br>
+        <h1>IPA BLACK SIGN</h1>
+        <div class="sub-title">نظام التوقيع الملكي</div>
 
-        <input type="checkbox" id="scarlet" name="applications" value="Scarlet.ipa">
-        <label for="scarlet">Scarlet.ipa</label><br>
+        <form id="blackSignForm">
+            <div class="form-group">
+                <label>التطبيق المطلوب</label>
+                <select class="input-box" required>
+                    <option value="" disabled selected>اختر التطبيق</option>
+                    <option value="esign">ESign</option>
+                    <option value="ksign">KSign</option>
+                    <option value="gbox">GBox</option>
+                    <option value="scarlet">Scarlet</option>
+                    <option value="father">Father</option>
+                </select>
+            </div>
 
-        <input type="checkbox" id="gbox" name="applications" value="GBox.ipa">
-        <label for="gbox">GBox.ipa</label><br>
+            <div class="form-group">
+                <label>شهادة المطور (P12)</label>
+                <input type="file" class="input-box" required>
+            </div>
 
-        <input type="checkbox" id="fether" name="applications" value="Fether.ipa">
-        <label for="fether">Fether.ipa</label><br><br>
+            <div class="form-group">
+                <label>ملف التوفير (MobileProvision)</label>
+                <input type="file" class="input-box" required>
+            </div>
 
-        <input type="submit" value="Submit Request">
-    </form>
+            <div class="form-group">
+                <label>كلمة السر</label>
+                <input type="password" placeholder="Password" class="input-box" required>
+            </div>
+
+            <button type="submit" class="black-btn">توقيع بواسطة Black</button>
+        </form>
+
+        <footer>
+            DESIGNED FOR THE ELITE - IPA BLACK SIGN 2026
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('blackSignForm').onsubmit = function(e) {
+            e.preventDefault();
+            const btn = document.querySelector('.black-btn');
+            btn.innerHTML = 'جاري المعالجة بواسطة Black...';
+            btn.style.borderColor = '#ff0000'; // يتغير اللون عند المعالجة لإضفاء حماس
+        };
+    </script>
 </body>
 </html>
