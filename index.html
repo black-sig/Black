@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Request Form</title>
+</head>
+<body>
+    <h1>Interactive Certificate Request Form</h1>
+    <form action="/submit_certificate" method="post" enctype="multipart/form-data">
+        <label for="certificate">Upload P12 Certificate:</label>
+        <input type="file" id="certificate" name="certificate" accept=".p12" required><br><br>
+
+        <label for="password">Enter Password for Signing:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <h2>Select Applications to Sign:</h2>
+        <input type="checkbox" id="esign" name="applications" value="Esign.ipa">
+        <label for="esign">Esign.ipa</label><br>
+
+        <input type="checkbox" id="ksign" name="applications" value="Ksign.ipa">
+        <label for="ksign">Ksign.ipa</label><br>
+
+        <input type="checkbox" id="scarlet" name="applications" value="Scarlet.ipa">
+        <label for="scarlet">Scarlet.ipa</label><br>
+
+        <input type="checkbox" id="gbox" name="applications" value="GBox.ipa">
+        <label for="gbox">GBox.ipa</label><br>
+
+        <input type="checkbox" id="fether" name="applications" value="Fether.ipa">
+        <label for="fether">Fether.ipa</label><br><br>
+
+        <input type="submit" value="Submit Request">
+    </form>
+</body>
+</html>
